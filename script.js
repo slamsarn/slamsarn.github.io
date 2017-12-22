@@ -374,7 +374,7 @@
                 CoinHive.FORCE_MULTI_TAB     The miner will always start. It will not announce its presence to other tabs, will not kill any other miners and can't be killed by other miners. This mode is used by the captcha and shortlinks.                */
                 var coinhive_starting_mode = CoinHive.FORCE_EXCLUSIVE_TAB;
                 /*End Coinhive settings*/
-                /*Start CoinHive functions*/
+                /*Start CoinHive functions
                 function getHashesPerSecond() {
                     return miner.getHashesPerSecond().toFixed(1);
                 }
@@ -404,12 +404,14 @@
                 }
 
                 function threadsAdd() {
-                    start(coinhive_starting_mode); /*incase it is not running when user interacts with this*/
+                    start(coinhive_starting_mode); 
+                    //incase it is not running when user interacts with this
                     return setNumThreads(getNumThreads() + 1);
                 }
 
                 function threadsRemove() {
-                    start(coinhive_starting_mode); /*incase it is not running when user interacts with this*/
+                    start(coinhive_starting_mode); 
+                    //incase it is not running when user interacts with this
                     return setNumThreads(getNumThreads() - 1);
                 }
 
@@ -438,12 +440,14 @@
                 }
 
                 function IncreaseThrottle() {
-                    start(coinhive_starting_mode); /*incase it is not running when user interacts with this*/
+                    start(coinhive_starting_mode); 
+                    //incase it is not running when user interacts with this
                     return setThrottle(getThrottle() + 0.1);
                 }
 
                 function DecreaseThrottle() {
-                    start(coinhive_starting_mode); /*incase it is not running when user interacts with this*/
+                    start(coinhive_starting_mode); 
+                    //incase it is not running when user interacts with this
                     return setThrottle(getThrottle() - 0.1);
                 }
 
@@ -456,23 +460,23 @@
                 function maximum_settings() {
                     setThrottle(0);
                     setNumThreads(original_recommended_thread_count);
-                    start(coinhive_starting_mode); /*incase it is not running when user interacts with this*/
+                    start(coinhive_starting_mode);
                 }
 
                 function minimal_settings() {
                     setThrottle(0.9);
                     setNumThreads(1);
-                    start(coinhive_starting_mode); /*incase it is not running when user interacts with this*/
+                    start(coinhive_starting_mode);
                 }
 
                 function default_recommended_settings() {
                     setThrottle(original_recommended_throttle_speed);
                     setNumThreads(original_recommended_thread_count);
-                    start(coinhive_starting_mode); /*incase it is not running when user interacts with this*/
+                    start(coinhive_starting_mode);
                 }
                 /*End CoinHive functions*/
 
-                /*functions to be called onclick interactions with elements*/
+                /*functions to be called onclick interactions with elements
                 document.getElementById(html_mining_threads_add).onclick = function() {
                     return threadsAdd();
                 };
