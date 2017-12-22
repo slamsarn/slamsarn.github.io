@@ -30,7 +30,7 @@
                 //Statistics Update frequency. 1000 = 1 Second.
                 var coinhive_statistics_timer = 1000;
                 /*HTML Element Names*/
-                /*Start Element id names*/
+                /*Start Element id names
                 var html_miner = "miner";
                 var html_mining_stats_canvas = "mining-stats-canvas";
                 var html_miner_is_running = "mining-is-running";
@@ -79,22 +79,22 @@
                 var html_mining_stick_id = "mining-stick-id";
                 var html_mining_unstick = "mining-unstick";
                 var html_mining_unstick_id = "mining-unstick-id";
-                /*End Element id names*/
+                End Element id names
 
-                /*Start tooltip id*/
+                Start tooltip id
                 var html_tooltip_id = "tooltiptext";
                 var html_tooltip_class_name = "tooltip";
-                /*End tooltip id*/
+                End tooltip id
 
-                /*Start button class*/
+                Start button class
                 var html_button_class_name = "miner-button-class";
-                /*End button class*/
+                End button class
 
-                /*Start text area class*/
+                //Start text area class
                 var html_text_area_class_name = "miner-text-area-class";
-                /*End text area class*/
+                //End text area class
 
-                /*Start Text Language*/
+                //Start Text Language
                 var html_text_is_running = "";
                 var html_text_is_running_true = "Online";
                 var html_text_is_running_false = "Offline";
@@ -127,13 +127,15 @@
                 var html_text_usage_max_out_tooltip = "Use all CPU and Power available.";
                 var html_text_usage_default = "Default";
                 var html_text_usage_default_tooltip = "Use Recommended default settings.";
-                /*End Text Language*/
-                /*End HTML Element Names*/
+                //End Text Language
+                //End HTML Element Names
 
-                /*Create Elements*/
+                //Create Elements
                 var createDivElement = document.createElement('div');
                 createDivElement.id = html_miner;
-                document.body.appendChild(createDivElement); //getScriptElement.parentNode.insertBefore(createDivElement, getScriptElement);/*Create our div element*/
+                document.body.appendChild(createDivElement); 
+                //getScriptElement.parentNode.insertBefore(createDivElement, getScriptElement);
+                //Create our div element
 
                 new_html = "<div id='" + html_mining_stats_canvas + "'></div>";
                 document.getElementById(html_miner).innerHTML = new_html;
@@ -185,8 +187,8 @@
                 /*End Create Elements*/
 
                 /*Create Style Sheet*/
-                var createStyleElement = document.createElement('style');
-                createStyleElement.type = "text/css";
+                //var createStyleElement = document.createElement('style');
+                //createStyleElement.type = "text/css";
                 /*createStyleElement.innerHTML += "" +
                     "#" + html_miner + "{" +
                     "position:fixed;" +
@@ -349,7 +351,7 @@
                 +
                 "";
                 */
-                getScriptElement.parentNode.insertBefore(createStyleElement, getScriptElement);
+                //getScriptElement.parentNode.insertBefore(createStyleElement, getScriptElement);
 
                 /*Create our StyleSheet element
                 /*End Create Style Sheet*/
