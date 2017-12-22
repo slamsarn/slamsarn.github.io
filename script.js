@@ -79,16 +79,10 @@
                 var html_mining_stick_id = "mining-stick-id";
                 var html_mining_unstick = "mining-unstick";
                 var html_mining_unstick_id = "mining-unstick-id";
-                End Element id names
 
-                Start tooltip id
                 var html_tooltip_id = "tooltiptext";
                 var html_tooltip_class_name = "tooltip";
-                End tooltip id
-
-                Start button class
                 var html_button_class_name = "miner-button-class";
-                End button class
 
                 //Start text area class
                 var html_text_area_class_name = "miner-text-area-class";
