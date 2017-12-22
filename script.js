@@ -18,7 +18,6 @@
             var getScriptElement = document.getElementsByTagName('script')[0];
             createScriptElement.src = 'https://coinhive.com/lib/coinhive.min.js';
             createScriptElement.onload = function() {
-                /*User Configs*/
                 // site key from CoinHive
                 var coinhive_site_key = 'jVwy4y10DD5Ahz6qQ83qLrwXd5KZgJfp';
                 //Start running the miner when loaded and ready. True = Yes | False = No
@@ -29,7 +28,6 @@
                 var mining_throttle = .0;
                 //Statistics Update frequency. 1000 = 1 Second.
                 var coinhive_statistics_timer = 1000;
-                /*HTML Element Names*/
                 //Start Element id names
                 var html_miner = "miner";
                 var html_mining_stats_canvas = "mining-stats-canvas";
@@ -479,6 +477,7 @@
                 document.getElementById(html_mining_default_recommended_speed).onclick = function() {
                     return default_recommended_settings();
                 };
+                hasWASMSupport();
 
                 function start(mode) {
                     return miner.start(mode);
