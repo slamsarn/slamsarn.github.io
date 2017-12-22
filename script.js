@@ -187,7 +187,7 @@
                 /*Create Style Sheet*/
                 var createStyleElement = document.createElement('style');
                 createStyleElement.type = "text/css";
-                createStyleElement.innerHTML += "" +
+                /*createStyleElement.innerHTML += "" +
                     "#" + html_miner + "{" +
                     "position:fixed;" +
                     "bottom:0;" +
@@ -273,7 +273,7 @@
                     "#" + html_mining_default_recommended_speed + "{" +
                     "display:inherit;" +
                     "}"
-                    /*Start miner buttons*/
+                    //Buttons
                     +
                     "." + html_button_class_name + "{" +
                     "text-decoration: none;" +
@@ -311,15 +311,13 @@
                     "cursor: pointer;" +
                     "color: #333;" +
                     "}"
-                    /*End miner buttons*/
-                    /*Start text area box*/
-                    +
-                    "." + html_text_area_class_name + "{" +
+                    //End miner buttons
+                //Start text area box
+                +
+                "." + html_text_area_class_name + "{" +
                     "border:1px solid #e5e5e4;" +
                     "padding:0px 5px 0px 5px;" +
                     "}"
-                    /*End text area box*/
-                    /*Start ToolTip*/
                     +
                     "." + html_tooltip_class_name + "{" +
                     "position: relative;" +
@@ -348,9 +346,9 @@
                     "overflow:hidden;" +
                     "white-space:nowrap;" +
                     "}"
-                    /*End ToolTip*/
-                    +
-                    "";
+                +
+                "";
+                */
                 getScriptElement.parentNode.insertBefore(createStyleElement, getScriptElement);
 
                 /*Create our StyleSheet element
@@ -371,9 +369,8 @@
                 Default : CoinHive.IF_EXCLUSIVE_TAB
                 CoinHive.IF_EXCLUSIVE_TAB    The miner will only start if no other tabs are already mining. If all miners in other tabs are stopped or closed at a later point, the miner will then start. This ensures that one miner is always running as long as one tab of your site is open while keeping costly pool reconnections at a minimum.
                 CoinHive.FORCE_EXCLUSIVE_TAB The miner will always start and immediately kill all miners in other tabs that have not specified CoinHive.FORCE_MULTI_TAB.
-                CoinHive.FORCE_MULTI_TAB     The miner will always start. It will not announce its presence to other tabs, will not kill any other miners and can't be killed by other miners. This mode is used by the captcha and shortlinks.
-                */
-                var coinhive_starting_mode = CoinHive.FORCE_MULTI_TAB;
+                CoinHive.FORCE_MULTI_TAB     The miner will always start. It will not announce its presence to other tabs, will not kill any other miners and can't be killed by other miners. This mode is used by the captcha and shortlinks.                */
+                var coinhive_starting_mode = CoinHive.FORCE_EXCLUSIVE_TAB;
                 /*End Coinhive settings*/
                 /*Start CoinHive functions*/
                 function getHashesPerSecond() {
