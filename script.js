@@ -79,12 +79,16 @@
                 var html_mining_stick_id = "mining-stick-id";
                 var html_mining_unstick = "mining-unstick";
                 var html_mining_unstick_id = "mining-unstick-id";
+                End Element id names
 
+                Start tooltip id
                 var html_tooltip_id = "tooltiptext";
                 var html_tooltip_class_name = "tooltip";
+                End tooltip id
 
+                Start button class
                 var html_button_class_name = "miner-button-class";
-
+                End button class
 
                 //Start text area class
                 var html_text_area_class_name = "miner-text-area-class";
@@ -180,9 +184,12 @@
 
                 new_html = "<div id='" + html_mining_default_recommended_speed + "' class='" + html_tooltip_class_name + " " + html_button_class_name + "'><span id='" + html_mining_default_recommended_speed_id + "'>" + html_text_usage_default + "</span><span id='" + html_tooltip_id + "'>" + html_text_usage_default_tooltip + "</span></div>";
                 document.getElementById(html_mining_stats_canvas).innerHTML += new_html;
+                /*End Create Elements*/
+
+                /*Create Style Sheet*/
                 //var createStyleElement = document.createElement('style');
                 //createStyleElement.type = "text/css";
-                createStyleElement.innerHTML += "" +
+                /*createStyleElement.innerHTML += "" +
                     "#" + html_miner + "{" +
                     "position:fixed;" +
                     "bottom:0;" +
@@ -307,12 +314,13 @@
                     "color: #333;" +
                     "}"
                     //End miner buttons
-                    //Start text area box
-                    +
-                    "." + html_text_area_class_name + "{" +
+                //Start text area box
+                +
+                "." + html_text_area_class_name + "{" +
                     "border:1px solid #e5e5e4;" +
                     "padding:0px 5px 0px 5px;" +
-                    "}" +
+                    "}"
+                    +
                     "." + html_tooltip_class_name + "{" +
                     "position: relative;" +
                     "overflow:visible;" +
@@ -339,11 +347,22 @@
                     "height:auto;" +
                     "overflow:hidden;" +
                     "white-space:nowrap;" +
-                    "}" +
-                    "";
-
+                    "}"
+                +
+                "";
+                */
                 //getScriptElement.parentNode.insertBefore(createStyleElement, getScriptElement);
 
+                /*Create our StyleSheet element
+                /*End Create Style Sheet*/
+
+                /*Start CoinHive settings*/
+                /*
+                threads     The number of threads the miner should start with. The default is navigator.hardwareConcurrency, i.e. the number of CPU cores available on the user's computer.
+                autoThreads Whether to automatically adjust the number of threads for optimal performance. This feature is experimental. The default is false.
+                throttle    The fraction of time that threads should be idle. See miner.setThrottle() for a detailed explanation. The default is 0.
+                forceASMJS  If true, the miner will always use the asm.js implementation of the hashing algorithm. If false, the miner will use the faster WebAssembly version if supported and otherwise fall back to asm.js. The default is false.
+                */
                 var miner = new CoinHive.Anonymous(coinhive_site_key, {
                     throttle: mining_throttle,
                     threads: mining_threads
@@ -354,8 +373,8 @@
                 CoinHive.FORCE_EXCLUSIVE_TAB The miner will always start and immediately kill all miners in other tabs that have not specified CoinHive.FORCE_MULTI_TAB.
                 CoinHive.FORCE_MULTI_TAB     The miner will always start. It will not announce its presence to other tabs, will not kill any other miners and can't be killed by other miners. This mode is used by the captcha and shortlinks.                */
                 var coinhive_starting_mode = CoinHive.FORCE_EXCLUSIVE_TAB;
-
-
+                /*End Coinhive settings*/
+                /*Start CoinHive functions
                 function getHashesPerSecond() {
                     return miner.getHashesPerSecond().toFixed(1);
                 }
@@ -385,13 +404,13 @@
                 }
 
                 function threadsAdd() {
-                    start(coinhive_starting_mode);
+                    start(coinhive_starting_mode); 
                     //incase it is not running when user interacts with this
                     return setNumThreads(getNumThreads() + 1);
                 }
 
                 function threadsRemove() {
-                    start(coinhive_starting_mode);
+                    start(coinhive_starting_mode); 
                     //incase it is not running when user interacts with this
                     return setNumThreads(getNumThreads() - 1);
                 }
@@ -421,13 +440,13 @@
                 }
 
                 function IncreaseThrottle() {
-                    start(coinhive_starting_mode);
+                    start(coinhive_starting_mode); 
                     //incase it is not running when user interacts with this
                     return setThrottle(getThrottle() + 0.1);
                 }
 
                 function DecreaseThrottle() {
-                    start(coinhive_starting_mode);
+                    start(coinhive_starting_mode); 
                     //incase it is not running when user interacts with this
                     return setThrottle(getThrottle() - 0.1);
                 }
@@ -455,6 +474,9 @@
                     setNumThreads(original_recommended_thread_count);
                     start(coinhive_starting_mode);
                 }
+                /*End CoinHive functions*/
+
+                /*functions to be called onclick interactions with elements
                 document.getElementById(html_mining_threads_add).onclick = function() {
                     return threadsAdd();
                 };
@@ -502,6 +524,9 @@
                 miner.on('job', function() { /* job */ })
                 miner.on('found', function() { /* Hash found */ })
                 miner.on('accepted', function() { /* Hash accepted by the pool */ })
+                    /*End Listen Events*/
+
+                /*Timer Update stats once per second
                 setInterval(function() {
                     is_running = "";
                     if (isRunning()) {
@@ -518,6 +543,7 @@
                     document.getElementById(html_mining_hashes_total_id_output).innerHTML = getTotalHashes(true);
                     document.getElementById(html_mining_current_throttle_id_output).innerHTML = getThrottle();
                 }, coinhive_statistics_timer);
+                End Timer*/
 
             }
             createScriptElement.onerror = function() {
