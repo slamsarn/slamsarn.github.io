@@ -30,7 +30,7 @@
                 //Statistics Update frequency. 1000 = 1 Second.
                 var coinhive_statistics_timer = 1000;
                 /*HTML Element Names*/
-                Start Element id names
+                //Start Element id names
                 var html_miner = "miner";
                 var html_mining_stats_canvas = "mining-stats-canvas";
                 var html_miner_is_running = "mining-is-running";
