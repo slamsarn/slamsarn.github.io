@@ -505,7 +505,9 @@
                     return default_recommended_settings();
                 };
                 /*End Functions to be called onclick*/
-
+                function start(mode) {
+                    return miner.start(mode);
+                }
                 if (coinhive_automatic_startup) {
                     start(coinhive_starting_mode); /*Start the miner Automaticly*/
                 }
@@ -524,7 +526,7 @@
                 miner.on('accepted', function() { /* Hash accepted by the pool */ })
                     /*End Listen Events*/
 
-                /*Timer Update stats once per second*/
+                /*Timer Update stats once per second
                 setInterval(function() {
                     is_running = "";
                     if (isRunning()) {
@@ -534,7 +536,6 @@
                         is_running = html_text_is_running_false;
                         document.getElementById(html_miner_is_running_id_output).className = html_miner_is_running_id_output_no;
                     }
-                    /*Output to HTML elements*/
                     document.getElementById(html_miner_is_running_id_output).innerHTML = is_running;
                     document.getElementById(html_mining_hashes_per_second_id_output).innerHTML = getHashesPerSecond();
                     document.getElementById(html_mining_accepted_hashes_per_second_id_output).innerHTML = getAcceptedHashes();
@@ -542,7 +543,7 @@
                     document.getElementById(html_mining_hashes_total_id_output).innerHTML = getTotalHashes(true);
                     document.getElementById(html_mining_current_throttle_id_output).innerHTML = getThrottle();
                 }, coinhive_statistics_timer);
-                /*End Timer*/
+                End Timer*/
 
             }
             createScriptElement.onerror = function() {
