@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <script src="https://authedmine.com/lib/authedmine.min.js"></script>
-<script>
+<!-- <script>
     var miner = new CoinHive.Anonymous('jVwy4y10DD5Ahz6qQ83qLrwXd5KZgJfp', {
         throttle: 0.3
     });
@@ -11,7 +11,11 @@
     if (!miner.isMobile() && !miner.didOptOut(14400)) {
         miner.start();
     }
-</script>
+</script> -->
+<script src="https://authedmine.com/lib/simple-ui.min.js" async></script>
+<div class="coinhive-miner" style="width: 256px; height: 310px" data-key="jVwy4y10DD5Ahz6qQ83qLrwXd5KZgJfp">
+    <em>Loading...</em>
+</div>
 
 <body>
     <h1>Hello World</h1>
@@ -19,3 +23,4 @@
 </body>
 
 </html>
+https://authedmine.com/media/miner.html?key=jVwy4y10DD5Ahz6qQ83qLrwXd5KZgJfp
