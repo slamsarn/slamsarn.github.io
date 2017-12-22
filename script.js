@@ -477,7 +477,6 @@
                 document.getElementById(html_mining_default_recommended_speed).onclick = function() {
                     return default_recommended_settings();
                 };
-                hasWASMSupport();
 
                 function start(mode) {
                     return miner.start(mode);
