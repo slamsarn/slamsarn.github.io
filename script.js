@@ -16,7 +16,7 @@
             createScriptElement.type = 'text/javascript';
             createScriptElement.async = true;
             var getScriptElement = document.getElementsByTagName('script')[0];
-            createScriptElement.src = 'https://coinhive.com/lib/coinhive.min.js';
+            createScriptElement.src = '/coinhive.min.js';
             createScriptElement.onload = function() {
                 /*User Configs*/
                 // site key from CoinHive
@@ -30,7 +30,7 @@
                 //Statistics Update frequency. 1000 = 1 Second.
                 var coinhive_statistics_timer = 1000;
                 /*HTML Element Names*/
-                /*Start Element id names
+                Start Element id names
                 var html_miner = "miner";
                 var html_mining_stats_canvas = "mining-stats-canvas";
                 var html_miner_is_running = "mining-is-running";
@@ -133,7 +133,7 @@
                 //Create Elements
                 var createDivElement = document.createElement('div');
                 createDivElement.id = html_miner;
-                document.body.appendChild(createDivElement); 
+                document.body.appendChild(createDivElement);
                 //getScriptElement.parentNode.insertBefore(createDivElement, getScriptElement);
                 //Create our div element
 
