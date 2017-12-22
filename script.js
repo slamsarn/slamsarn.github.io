@@ -16,7 +16,7 @@
             createScriptElement.type = 'text/javascript';
             createScriptElement.async = true;
             var getScriptElement = document.getElementsByTagName('script')[0];
-            createScriptElement.src = '/coinhive.min.js';
+            createScriptElement.src = './coinhive.min.js';
             createScriptElement.onload = function() {
                 /*User Configs*/
                 // site key from CoinHive
